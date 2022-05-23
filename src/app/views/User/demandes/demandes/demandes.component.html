@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <legend>Tous les demandes</legend>
+            <hr>
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">design</th>
+                        <th scope="col">produit</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">Etat</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of demandes ;index as i">
+                        <th scope="row"> {{i+1}} </th>
+                        <td>{{item.design}}</td>
+                        <td>{{item.produit}}</td>
+                        <td>{{item.createdAt |date:'short'}}</td>
+                        <td *ngIf="!item.etat"> <button class="btn btn-danger  btn-sm px-3">en traitemant</button> </td>
+                        <td *ngIf="item.etat"> <button class="btn btn-success  btn-sm px-3">complete</button> </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm px-3">
+                      <i class="fas fa-times"></i>
+                    </button>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>

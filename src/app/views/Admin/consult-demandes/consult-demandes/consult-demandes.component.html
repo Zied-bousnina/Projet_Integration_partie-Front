@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <legend>Tous les demandes</legend>
+            <hr>
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom Du client</th>
+                        <th scope="col">design</th>
+                        <th scope="col">produit</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">Etat</th>
+                        <th scope="col">Done</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of demandes ;index as i">
+                        <th scope="row"> {{i+1}} </th>
+                        <span *ngFor="let item2 of users">
+
+                            <td *ngIf="item2._id == item.idClient">{{item2.firstName}}</td>
+                        </span>
+                        <td>{{item.design}}</td>
+                        <td>{{item.produit}}</td>
+                        <td>{{item.createdAt |date:'short'}}</td>
+                        <td *ngIf="!item.etat"> <button class="btn btn-danger  btn-sm px-3"><i class="fas fa-wrench"></i></button> </td>
+                        <td> <button class="btn btn-success  btn-sm px-3" (click)="done(item._id)"><i class="fas fa-check"></i></button> </td>
+                        <!-- <td>
+                            <button type="button" class="btn btn-danger btn-sm px-3">
+                      <i class="fas fa-times"></i>
+                    </button>
+                        </td> -->
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>

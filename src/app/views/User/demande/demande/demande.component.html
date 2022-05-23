@@ -1,0 +1,37 @@
+<div class="container">
+    <form action="">
+
+        <fieldset>
+            <legend>Nouvelle demande</legend>
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" placeholder="Nombre du pieces" name="produit" [(ngModel)]="newDemande.produit">
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" placeholder="design" name="design" [(ngModel)]="newDemande.design">
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-6" *ngFor="let item of u">
+                    <input type="text" class="form-control" name="design" [(ngModel)]="newDemande.idClient" value="zied">
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button class="btn btn-success" (click)="add(newDemande)"> créés</button>
+
+                </div>
+            </div>
+
+
+        </fieldset>
+    </form>
+</div>
