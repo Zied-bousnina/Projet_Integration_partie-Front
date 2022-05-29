@@ -18,6 +18,9 @@ const routes: Routes = [
   {path:"", component: FrontLayoutComponent,children: [
     // {path:"", loadChildren: ()=>import("./views/Front/front/front.module").then(m=>m.FrontModule)},
     {path:"", loadChildren: ()=>import("./views/Front/match/match.module").then(m=>m.MatchModule)},
+       {path:'consultMatch/type/:type', loadChildren:()=>import('./views/Front/consult-match/consult-match.module').then(m=>m.ConsultMatchModule)},
+       {path:'consultMatch/type/:type/equipe/:id_equipe', loadChildren:()=>import('./views/Admin/view-equipe/view-equipe.module').then(m=>m.ViewEquipeModule)},
+
     {path:"matchTour", loadChildren: ()=>import("./views/Front/match-tournoi/match-tournoi.module").then(m=>m.MatchTournoiModule)},
     {path:"tournoi", loadChildren: ()=>import("./views/Front/tournoi/tournoi.module").then(m=>m.TournoiModule)},
     {path:"matchTour/equipe/:id", loadChildren: ()=>import("./views/Front/equipe/equipe.module").then(m=>m.EquipeModule)},
@@ -25,7 +28,7 @@ const routes: Routes = [
 
   ]},
   {path:"admin", component: AdminLayoutComponent,
-  // canActivate:[AuthGuard],
+  canActivate:[AuthGuard],
      children:[
       {path:'', loadChildren:()=>import('./views/Admin/front-admin/front-admin.module').then(m=>m.FrontAdminModule)},
 
@@ -34,18 +37,22 @@ const routes: Routes = [
        {path:'demandes', loadChildren:()=>import('./views/Admin/consult-demandes/consult-demandes.module').then(m=>m.ConsultDemandesModule)},
        {path:'profilAdmin', loadChildren:()=>import('./views/Admin/profil/profil.module').then(m=>m.ProfilModule)},
        {path:'consultMatch', loadChildren:()=>import('./views/Admin/consult-match/consult-match.module').then(m=>m.ConsultMatchModule)},
+       {path:'consultMatch/type/:type', loadChildren:()=>import('./views/Admin/type-match/type-match.module').then(m=>m.TypeMatchModule)},
+       {path:'consultMatch/type/:type/equipe/:id_equipe', loadChildren:()=>import('./views/Admin/view-equipe/view-equipe.module').then(m=>m.ViewEquipeModule)},
        {path:'consultTournoi', loadChildren:()=>import('./views/Admin/consult-tournoi/consult-tournoi.module').then(m=>m.ConsultTournoiModule)},
        {path:'addMatch', loadChildren:()=>import('./views/Admin/add-match/add-match.module').then(m=>m.AddMatchModule)},
        {path:'Tournoi', loadChildren:()=>import('./views/Admin/add-tournoi/add-tournoi.module').then(m=>m.AddTournoiModule)},
        {path:'Tournoi/addTournoi', loadChildren:()=>import('./views/Admin/tournoi/tournoi.module').then(m=>m.TournoiModule)},
-       {path:'Tournoi/affiche/:id', loadChildren:()=>import('./views/Admin/affiche-tournoi/affiche-tournoi.module').then(m=>m.AfficheTournoiModule)},
+       {path:'Tournoi/affiche/:id_tournoi', loadChildren:()=>import('./views/Admin/affiche-tournoi/affiche-tournoi.module').then(m=>m.AfficheTournoiModule)},
        {path:'addEquipe', loadChildren:()=>import('./views/Admin/add-equipe/add-equipe.module').then(m=>m.AddEquipeModule)},
        {path:'AddSousAdmin', loadChildren:()=>import('./views/Admin/add-second-admin/add-second-admin.module').then(m=>m.AddSecondAdminModule)},
        {path:'participant', loadChildren:()=>import('./views/Admin/participant/participant.module').then(m=>m.ParticipantModule)},
        {path:'participant/tournament', loadChildren:()=>import('./views/Admin/tournament/tournament.module').then(m=>m.TournamentModule)},
-       {path:'participant/tournament/addPlayer/:id_equipe', loadChildren:()=>import('./views/Admin/add-players/add-players.module').then(m=>m.AddPlayersModule)},
+       {path:'participant/tournament/addPlayer/:id_equipe/:id_tour', loadChildren:()=>import('./views/Admin/add-players/add-players.module').then(m=>m.AddPlayersModule)},
+       {path:'participant/tournament/addPlayerv2/:id_equipe', loadChildren:()=>import('./views/Admin/add-player-v2/add-player-v2.module').then(m=>m.AddPlayerV2Module)},
        {path:'participant/tournament/updateteam/:id', loadChildren:()=>import('./views/Admin/updateteam/updateteam.module').then(m=>m.UpdateteamModule)},
        {path:'participant/team', loadChildren:()=>import('./views/Admin/add-team/add-team.module').then(m=>m.AddTeamModule)},
+       {path:'participant/teamV2/:id', loadChildren:()=>import('./views/Admin/add-team-v2/add-team-v2.module').then(m=>m.AddTeamV2Module)},
        {path:'**', loadChildren:()=>import('./views/Admin/notfound/notfound.module').then(m=>m.NotfoundModule)}
 
      ]},

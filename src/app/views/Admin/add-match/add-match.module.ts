@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddMatchRoutingModule } from './add-match-routing.module';
 import { AddMatchComponent } from './add-match/add-match.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AddMatchComponent } from './add-match/add-match.component';
   ],
   imports: [
     CommonModule,
-    AddMatchRoutingModule
+    AddMatchRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AddMatchModule { }

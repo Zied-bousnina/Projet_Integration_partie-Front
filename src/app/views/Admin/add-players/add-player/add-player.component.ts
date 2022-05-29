@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JoueurService } from '../../../../services/joueur.service';
 import { ActivatedRoute } from '@angular/router';
 import { Joueur } from '../../../../classes/joueur';
+import { JoueurTournoiService } from '../../../../services/joueur-tournoi.service';
 
 @Component({
   selector: 'app-add-player',
@@ -14,8 +15,9 @@ export class AddPlayerComponent implements OnInit {
   registerForm!:FormGroup;
   submitted =false
   joueur:Joueur|any;
+  id_tour:BigInt|any;
 
-  constructor(private formBuilder: FormBuilder, private servicejoueur:JoueurService, private router:ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private servicejoueur:JoueurTournoiService, private router:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.registerForm= this.formBuilder.group({
@@ -29,6 +31,7 @@ export class AddPlayerComponent implements OnInit {
     this.servicejoueur.getbyId_equipe(this.router.snapshot.params['id_equipe']).subscribe(data=>{
         this.joueur = data
     })
+    this.id_tour = this.router.snapshot.params['id_tour']
   }
   onSubmit(){
     this.submitted=true;
@@ -40,12 +43,12 @@ export class AddPlayerComponent implements OnInit {
         console.log(this.router.snapshot.params['id_equipe'])
         console.log({...this.registerForm.value,...{"id_equipe":this.router.snapshot.params['id_equipe']}})
         this.servicejoueur.createJoueur({...this.registerForm.value,...{"id_equipe":this.router.snapshot.params['id_equipe']}}).subscribe({})
-        this.servicejoueur.getbyId_equipe(this.router.snapshot.params['id_equipe']).subscribe(data=>{
-            this.joueur = data
-        })
-        console.log(this.servicejoueur.getbyId_equipe(this.router.snapshot.params['id_equipe']).subscribe())
-        // this.joueur = this.joueur. { ...this.registerForm.value,...{"id_equipe":this.router.snapshot.params['id_equipe']}}
-        console.log(this.joueur)
+        // this.servicejoueur.getbyId_equipe(this.router.snapshot.params['id_equipe']).subscribe(data=>{
+        //     this.joueur = data
+        // })
+        // console.log(this.servicejoueur.getbyId_equipe(this.router.snapshot.params['id_equipe']).subscribe())
+        // // this.joueur = this.joueur. { ...this.registerForm.value,...{"id_equipe":this.router.snapshot.params['id_equipe']}}
+        // console.log(this.joueur)
 
     }
 

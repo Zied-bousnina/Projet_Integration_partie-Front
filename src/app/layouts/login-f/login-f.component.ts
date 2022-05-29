@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { ProfileService } from '../../services/profile.service';
 import { User } from 'src/app/classes/user';
 import { AdminService } from '../../services/admin.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-f',
@@ -20,15 +21,26 @@ export class LoginFComponent implements OnInit {
   isInscri =false
 
 
-  constructor(private router:Router, private adminService:AdminService) { }
+  constructor(private router:Router, private adminService:AdminService,private formBuilder :FormBuilder) { }
 
+  registerForm!:FormGroup;
+  submitted =false
   // admin =new Admin()
   notAdmin: boolean =false;
   isAdmin:Admin[]=[];
   souAdmin:boolean=false;
   ngOnInit(): void {
   //  this.Adminservice.getAllAdmin().subscribe(data=>this.a = data)
+  this.registerForm= this.formBuilder.group({
+    email:['', Validators.required],
+    pass:['', Validators.required],
 
+    // class:['', Validators.required]
+})
+
+  }
+  onSubmit(){
+    this.submitted=true;
   }
      valid(admin:Admin){
      console.log(admin);
@@ -41,8 +53,10 @@ export class LoginFComponent implements OnInit {
         this.adminService.auth(true,this.souAdmin);
          console.log(this.souAdmin)
 
-        this.router.navigate([`admin/${this.admin.email}`])
+        this.router.navigate([`admin/`])
 
+      }else{
+        alert("Verif you're Password or UserName !!")
       }
     })
 

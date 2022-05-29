@@ -16,4 +16,7 @@ export class EquipeService {
 getAll(){
   return this.http.get(`${API_URL}/getAllequipe`)
 }
+getEquipeByID(id:BigInt){
+  return this.http.get(`${API_URL}/getEquipeByID/${id}`)
+}
 }

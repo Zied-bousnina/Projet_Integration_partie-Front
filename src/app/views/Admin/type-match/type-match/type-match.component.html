@@ -1,0 +1,42 @@
+<br>
+<div class=" alert-danger" *ngIf="matchs.length==0"> there is no Match !!</div>
+
+<div class="row" *ngFor="let item of matchs; let i=index; let even=even">
+
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{item.type}}</h5>
+                <div *ngFor="let e of equipe" _ngcontent-jwq-c57="" style="position: absolute;z-index: 222222;top: 156px;left: 94px;-webkit-text-stroke: medium;color: #212529;">
+                    <span _ngcontent-jwq-c57=""><a href="" [routerLink]="['equipe',item.id_equipe1]" *ngIf="item.id_equipe1 ==e.id_equipe" >{{e.name}}</a></span>
+                </div>
+
+                <div *ngFor="let e of equipe" _ngcontent-uwx-c57="" style="position: relative;top: 109px;right: -329px;-webkit-text-stroke: medium;color: #212529;">
+                    <span _ngcontent-uwx-c57=""><a href="" [routerLink]="['equipe',item.id_equipe2]"*ngIf="item.id_equipe2 ==e.id_equipe" >{{e.name}} </a></span>
+                </div>
+                <p class="card-text"><img _ngcontent-uug-c57="" _ngcontent-rfl-c57="" src="assets/images/vs.jpg" style="width: 450px;height: 198px;" class=""></p>
+                <a href="" [routerLink]="['/admin/consultMatch/type',type]" class="btn btn-danger mr-4" (click)="delete(item.id_match)">Delete </a>
+                <!-- <a href="" class="btn btn-secondary" [routerLink]="['update']">Update</a> -->
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{matchs[i+1].type}}</h5>
+                <div _ngcontent-jwq-c57="" style="position: absolute;z-index: 222222;top: 156px;left: 94px;-webkit-text-stroke: medium;color: #212529;">
+                    <span _ngcontent-jwq-c57=""><a href="" [routerLink]="['equipe',1]"> {{matchs[i+1].name}}</a></span>
+                </div>
+
+                <div _ngcontent-uwx-c57="" style="position: relative;top: 109px;right: -329px;-webkit-text-stroke: medium;color: #212529;">
+                    <span _ngcontent-uwx-c57=""> <a href="" [routerLink]="['equipe',1]"> {{matchs[i+1].name}}</a></span>
+                </div>
+                <p class="card-text"><img _ngcontent-uug-c57="" _ngcontent-rfl-c57="" src="assets/images/vs.jpg" style="width: 450px;height: 198px;" class=""></p>
+                <a href="" class="btn btn-danger mr-4" (click)="delete(matchs[i+1].id_match)">Delete </a>
+                <a href="" class="btn btn-secondary" [routerLink]="['update']">Update </a>
+            </div>
+        </div>
+    </div> -->
+
+</div>

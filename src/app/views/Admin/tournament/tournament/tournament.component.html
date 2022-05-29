@@ -51,7 +51,7 @@
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.00938em;margin: 0;">
-                                            <a href="" routerLink="/admin/participant/team" class="text-decoration-none pl-4"> add team</a>
+                                            <a href="" routerLink="/admin/addEquipe" class="text-decoration-none pl-4"> add team</a>
                                         </p>
                                     </div>
                                     <div class="MuiButtonBase-root-8158 MuiIconButton-root-8150 MuiExpansionPanelSummary-expandIcon-8452 MuiIconButton-edgeEnd-8152" aria-disabled="false" aria-hidden="true" style="transform: rotate(0deg);
@@ -541,8 +541,12 @@
     -webkit-tap-highlight-color: transparent;">
      <!-- routerLink="/admin/participant/tournament/addPlayer" -->
      <a href=""
-     [routerLink]="['/admin/participant/tournament/addPlayer',item.id_equipe ]"
-      > <div  style="font-size: 16px;position: absolute;left: 27px;text-size: 2px;text-size-adjust: -10px;"> (8)</div>
+     [routerLink]="['/admin/participant/tournament/addPlayerv2',item.id_equipe ]"
+      >
+      <div *ngFor="let c of count" >
+
+          <div *ngIf="item.id_equipe==c.id_equipe" style="font-size: 16px;position: absolute;left: 27px;text-size: 2px;text-size-adjust: -10px;"> ({{c.nb}})</div>
+        </div>
 
 
 

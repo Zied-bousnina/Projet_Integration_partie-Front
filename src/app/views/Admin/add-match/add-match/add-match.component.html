@@ -11,42 +11,43 @@
                     <!-- <h2 class="title">Add Second Admin</h2> -->
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="registerForm" (submit)="onSubmit()">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Equipe 1</label>
-                                <select name="" class="form-control" id="">
+                                <select name="" class="form-control" id="" for="id_equipe1" formControlName="id_equipe1" [ngClass]="{'is-invalid':submitted && registerForm.controls['id_equipe1'].errors}" name="id_equipe1">
                                     <option value="">--Select Equipe 1--</option>
-                                    <option value=""></option>
+                                    <option *ngFor="let item of equipe" [value]="item.id_equipe">{{item.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Equipe 2</label>
-                                <select name="" class="form-control" id="">
+                                <select name="" class="form-control" id="" for="id_equipe2" formControlName="id_equipe2" [ngClass]="{'is-invalid':submitted && registerForm.controls['id_equipe2'].errors}" name="id_equipe2">
                                     <option value="">--Select Equipe 2--</option>
-                                    <option value=""></option>
+                                    <option *ngFor="let item of equipe" [value]="item.id_equipe">{{item.name}}</option>
+
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Localisation</label>
-                                <input type="text" class="form-control" id="inputPassword4" placeholder="Localisation">
+                                <input type="text" class="form-control" id="inputPassword4" for="localisation" formControlName="localisation" [ngClass]="{'is-invalid':submitted && registerForm.controls['localisation'].errors}" name="localisation" placeholder="Localisation">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Date</label>
-                                <input type="date" class="form-control" id="inputEmail4" placeholder="date">
+                                <input type="date" class="form-control" id="inputEmail4" placeholder="date" for="date" formControlName="date" [ngClass]="{'is-invalid':submitted && registerForm.controls['date'].errors}" name="date">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="typeMatch">Type Match</label>
-                                <select name="" class="form-control" id="">
+                                <select name="" class="form-control" id="" for="type" formControlName="type" [ngClass]="{'is-invalid':submitted && registerForm.controls['type'].errors}" name="type">
                                     <option value="">--Select Type Match--</option>
-                                    <option value="">Football</option>
-                                    <option value="">BasketBall</option>
-                                    <option value="">Tenis</option>
-                                    <option value="">HandBall</option>
+                                    <option value="Football">Football</option>
+                                    <option value="BasketBall">BasketBall</option>
+                                    <option value="Tenis">Tenis</option>
+                                    <option value="HandBall">HandBall</option>
                                 </select>
                             </div>
 

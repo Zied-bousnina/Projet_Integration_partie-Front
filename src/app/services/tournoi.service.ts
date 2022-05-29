@@ -14,6 +14,9 @@ export class TournoiService {
    return this.http.post(`${API_URL}/createTournoi`, o);
  }
  getAllTournoi(){
-   return this.http.get(`${API_URL}/getAllTournoi`)
+   return this.http.get(`${API_URL}/getAllTournoi`);
+ }
+ getLastIdTournoi(){
+  return this.http.get(`${API_URL}/getLastTournoi`);
  }
 }

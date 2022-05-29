@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EquipeService } from '../../../../services/equipe.service';
+import { TournoiService } from '../../../../services/tournoi.service';
+import { EquipeTournoiService } from '../../../../services/equipe-tournoi.service';
 
 @Component({
   selector: 'app-add-team',
@@ -12,16 +15,21 @@ export class AddTeamComponent implements OnInit {
 
   registerForm!:FormGroup;
   submitted =false
+  id_equipe:Object|any;
 
-  constructor(private formBuilder: FormBuilder, private route:Router) { }
+  constructor(private formBuilder: FormBuilder, private route:Router, private serviceEquipe:EquipeTournoiService, private serviceTournoi:TournoiService) { }
 
   ngOnInit(): void {
     this.registerForm= this.formBuilder.group({
-      teamName:['', Validators.required],
+      name:['', Validators.required],
     //   lastName:['', Validators.required],
     //   adresse:['', Validators.required],
     //   tel:['', Validators.required]
     })
+    this.serviceTournoi.getLastIdTournoi().subscribe(data=>{this.id_equipe=data
+        console.log(this.id_equipe[0].id_tournoi)
+    })
+    console.log(this.id_equipe)
   }
   onSubmit(){
     this.submitted=true;
@@ -29,8 +37,15 @@ export class AddTeamComponent implements OnInit {
       return
     }else{
 
+
+        console.log()
+        this.serviceEquipe.createEquipe({...this.registerForm.value,...{"id_tournoi":this.id_equipe[0].id_tournoi}}).subscribe({})
+        console.log({...this.registerForm.value,...{"id_tournoi":this.id_equipe[0].id_tournoi}})
         alert("success")
-        this.route.navigate(['/admin/participant/tournament'])
+        this.serviceTournoi.getLastIdTournoi().subscribe(data=>{this.id_equipe=data
+            console.log(this.id_equipe[0].id_tournoi)
+            this.route.navigate(['/admin/Tournoi/affiche/',this.id_equipe[0].id_tournoi])
+        })
     }
 
   }

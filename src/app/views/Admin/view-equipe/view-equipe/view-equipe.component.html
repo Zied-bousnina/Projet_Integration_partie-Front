@@ -1,0 +1,37 @@
+<!-- On rows -->
+<fieldset>
+    <legend> {{equipe[0].name}} </legend>
+</fieldset>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr class="table-active">
+
+                <td class="table-active">#</td>
+
+                <td class="table-primary">nom</td>
+                <td class="table-secondary">prenom</td>
+                <td class="table-danger">Faculté </td>
+                <td class="table-success">depJoueur</td>
+                <td class="table-danger">Class</td>
+                <td class="table-danger">date Naissance </td>
+                <!-- <td class="table-danger">Delete</td> -->
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr class="table-active" *ngFor="let item of joueur">
+                <td class="table-active">{{item.id_joueur}}</td>
+
+                <td class="table-primary">{{item.nom}}</td>
+                <td class="table-secondary">{{item.prenom}}</td>
+                <td class="table-danger">{{item.depJoueur}}</td>
+                <td class="table-success">{{item.faculteJoueur}}</td>
+                <td class="table-danger">{{item.class}}</td>
+                <td class="table-danger">{{item.dateNais}}</td>
+                <!-- <td class="table-danger"> <a class="link-danger" (click)="delete(item.id_joueur)"> delete </a></td> -->
+            </tr>
+
+        </tbody>
+    </table>
+</div>

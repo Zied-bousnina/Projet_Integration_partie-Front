@@ -22,6 +22,13 @@ getAll(){
 getbyId_equipe(id:BigInteger){
   return this.http.get(`${API_URL}/getJoueurByIDEquipe/${id}`)
 }
+getCount(){
+  return this.http.get(`${API_URL}/countJoueur`);
+}
 
 // getJoueurByIDEquipe
+
+delete(id:BigInt){
+  return this.http.delete(`${API_URL}/deleteJoueur/${id}`)
+}
 }
